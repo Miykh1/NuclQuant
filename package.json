@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://miykh1.github.io/NuclQuant",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
