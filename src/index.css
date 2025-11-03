@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 222 25% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 22% 12%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 22% 12%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary - Classy Deep Blue */
+    --primary: 214 75% 48%;
+    --primary-foreground: 210 40% 98%;
+    
+    /* Helios Blue - Vibrant Accent */
+    --helios-blue: 195 92% 58%;
+    --helios-foreground: 222 25% 8%;
+
+    /* Secondary - Graphite Gray */
+    --secondary: 220 12% 35%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Muted - Refined Grays */
+    --muted: 220 15% 18%;
+    --muted-foreground: 210 15% 65%;
+
+    /* Accent - Plasma Gold */
+    --accent: 38 95% 62%;
+    --accent-foreground: 222 25% 8%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 22%;
+    --input: 220 15% 20%;
+    --ring: 214 75% 48%;
+
+    --radius: 0.75rem;
+
+    /* Design Tokens */
+    --energy-blue: 214 75% 48%;
+    --energy-green: 165 70% 50%;
+    --energy-amber: 38 95% 62%;
+    --nuclear-glow: 195 92% 68%;
+    --graphite: 220 12% 35%;
+    --graphite-dark: 220 12% 25%;
+    --graphite-light: 220 12% 45%;
+    
+    /* Advanced Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(214 75% 48%) 0%, hsl(195 92% 58%) 100%);
+    --gradient-helios: linear-gradient(135deg, hsl(195 92% 58%) 0%, hsl(38 95% 62%) 100%);
+    --gradient-danger: linear-gradient(135deg, hsl(0 72% 51%) 0%, hsl(38 95% 62%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(222 22% 12%) 0%, hsl(222 22% 15%) 100%);
+    --gradient-graphite: linear-gradient(135deg, hsl(220 12% 25%) 0%, hsl(220 12% 35%) 100%);
+    
+    /* Shadows */
+    --shadow-glow: 0 0 40px hsl(195 92% 58% / 0.35);
+    --shadow-gold: 0 0 30px hsl(38 95% 62% / 0.25);
+    --shadow-card: 0 8px 24px hsl(222 25% 5% / 0.5);
+    --shadow-elevated: 0 12px 40px hsl(222 25% 5% / 0.6);
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "cv11", "ss01";
+    font-optical-sizing: auto;
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-helios {
+    background: var(--gradient-helios);
+  }
+  
+  .gradient-danger {
+    background: var(--gradient-danger);
+  }
+  
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+  
+  .gradient-graphite {
+    background: var(--gradient-graphite);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+  
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+}
