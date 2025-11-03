@@ -1,0 +1,67 @@
+name: Deploy Vite App to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: "npm"
+
+      - name: Install dependencies
+        # Use npm install because there is no package-lock.json in repo
+        run: npm install
+
+      - name: Build Vite project
+        run: npm run build
+
+      - name: Add 404.html fallback
+        run: cp dist/index.html dist/404.html
+
+      - name: Show built index.html (debug)
+        run: |
+          echo "===== dist/index.html ====="
+          sed -n '1,200p' dist/index.html || echo "dist/index.html not found"
+          echo "===== end index.html ====="
+
+      - name: List dist/assets (debug)
+        run: |
+          echo "===== dist/assets listing ====="
+          ls -la dist/assets || echo "dist/assets not found or empty"
+          echo "===== end assets listing ====="
+
+      - name: Upload artifact for deployment
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: https://miykh1.github.io/NuclQuant/
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
