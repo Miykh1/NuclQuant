@@ -157,7 +157,7 @@ export const OptimizationResults = ({ solution, config }: OptimizationResultsPro
       {solution.recommendations.length > 0 && (
         <Card>
           <CardHeader>
-            <CardTitle>AI Recommendations</CardTitle>
+            <CardTitle>Recommendations</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-2">
@@ -173,3 +173,4 @@ export const OptimizationResults = ({ solution, config }: OptimizationResultsPro
     </div>
   );
 };
+
